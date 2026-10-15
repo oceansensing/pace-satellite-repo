@@ -130,11 +130,22 @@ fact from a guess that aged.
 
 - **`PLAN.md`**: the founding plan and running record.
 - **`DECISIONS.md`**: dated one-way decisions, D1 onward.
-- **`pipeline/products.toml`**: what this repository publishes (not written yet: nothing to publish).
+- **`pipeline/products.toml`**: what this repository publishes — ten products, one per NASA suite, 44
+  roots, each `r2_only` with a tile cache of its own.
+- **`.github/workflows/cleanup-caches.yml`**: the daily sweep of tile caches no run has used for two days.
 
 ## What must not be got wrong here
 
 - **Not `orb-satellite-pace-repo`**, which holds the University of Delaware ORB lab's PACE products from that lab's own server. This one is for products from NASA's own services.
+- **The roots, the fetcher and the contract are one list.** A quantity is a stem in the site's
+  `packages/ocean-map/undrawn.ts` (`PACE_LAYERS`), which the contract reads for its roots and the fetcher
+  (`scripts/fetch-pace.py`) holds itself to; `products.toml` here names the same 44 roots. Add a quantity
+  in the site first, then here.
+- **A product's restore needs its held key.** Each tile cache's Restore step takes
+  `cache-held-<product>-tiles` as its `restore-keys`, or a product held after its probe answered goes out
+  without its tiles, and R2 drops them.
+- **The schedule waits on a read run.** Dispatch first; uncomment the cron only after a dispatched run's
+  status, a root on R2 and the R2 job have been read.
 
 ### Rules inherited from the sibling data repositories
 

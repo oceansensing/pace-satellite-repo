@@ -1,0 +1,280 @@
+# What this repository publishes: NASA's PACE ocean color and atmosphere
+# products, from NASA's ocean color archive (OB.DAAC), each quantity as its
+# newest day and as the mean of each cell's clear days over the eight newest,
+# on NASA's 4 km grid (0.1 degree for the aerosols, NASA's finest there). One
+# product per NASA suite: one file family upstream, one arrival time, one
+# fault. The fetcher is the site's `scripts/fetch-pace.py`, whose docstring
+# carries the measurements.
+#
+# **To the second host alone** (`r2_only`, the site pipeline's D13, its note of
+# 2026-10-09): every root and tile of these products is published to
+# Cloudflare R2 and not to Pages. The roots stay on the `published` branch,
+# where the next run seeds from them.
+#
+# **The budgets are NASA's posting times plus a missed day.** Measured
+# 2026-10-08..14 from the catalog's own timestamps: most suites post day D at
+# D+1 13:18-16:24 UTC (MOANA to 18:18, the trace gases to 21:54), PAR at D+2
+# 13:30, net primary production at D+2 16:00 to D+3 00:30. A root's time is its
+# day's start, so the youngest it can be is a day and a half.
+#
+# Two rules inherited from the sibling repositories:
+#
+# - **Every `roots` entry here must be one the site's `test-schema.mjs
+#   --roots` publishes**, or the orchestrator exits 2 and stops the publish.
+# - **A product that leaves takes its files with it**: the seed leaves a
+#   top-level file no product's `writes` claims, and the R2 publish removes it.
+
+# **The paths are relative to the site checkout, not to this workspace.**
+[contract]
+check = ["node", "scripts/test-schema.mjs"]
+roots = ["node", "scripts/test-schema.mjs", "--roots"]
+
+[defaults]
+timeout_minutes = 20
+
+# **One lane, named after the server**: a lock, so two suites never read
+# NASA's archive at once.
+
+[steps.bgc]
+cmd = ["python3", "scripts/fetch-pace.py", "--only=pace-bgc"]
+lane = "obdaac"
+
+[steps.moana]
+cmd = ["python3", "scripts/fetch-pace.py", "--only=pace-moana"]
+lane = "obdaac"
+
+[steps.npp]
+cmd = ["python3", "scripts/fetch-pace.py", "--only=pace-npp"]
+lane = "obdaac"
+
+[steps.aop]
+cmd = ["python3", "scripts/fetch-pace.py", "--only=pace-aop"]
+lane = "obdaac"
+
+[steps.kd]
+cmd = ["python3", "scripts/fetch-pace.py", "--only=pace-kd"]
+lane = "obdaac"
+
+[steps.par]
+cmd = ["python3", "scripts/fetch-pace.py", "--only=pace-par"]
+lane = "obdaac"
+
+[steps.iop]
+cmd = ["python3", "scripts/fetch-pace.py", "--only=pace-iop"]
+lane = "obdaac"
+
+[steps.aer]
+cmd = ["python3", "scripts/fetch-pace.py", "--only=pace-aer"]
+lane = "obdaac"
+
+[steps.trgas]
+cmd = ["python3", "scripts/fetch-pace.py", "--only=pace-trgas"]
+lane = "obdaac"
+
+[steps.cloud]
+cmd = ["python3", "scripts/fetch-pace.py", "--only=pace-cloud"]
+lane = "obdaac"
+
+[products.pace-bgc]
+title = "PACE OCI biogeochemistry: chlorophyll-a, phytoplankton carbon, POC and PIC"
+step = "bgc"
+roots = ["chl-pace.json", "chl-pace-8d.json", "phytoc-pace.json", "phytoc-pace-8d.json", "poc-pace.json", "poc-pace-8d.json", "pic-pace.json", "pic-pace-8d.json"]
+writes = ["chl-pace*.json", "phytoc-pace*.json", "poc-pace*.json", "pic-pace*.json"]
+max_age_hours = 72
+r2_only = true
+namespace = ["python3", "scripts/fetch-pace.py", "--namespace", "--only=pace-bgc"]
+
+[products.pace-bgc.tiles]
+build = ["python3", "scripts/fetch-pace.py", "--tiles", "--only=pace-bgc"]
+key = ["python3", "scripts/fetch-pace.py", "--tile-key", "--only=pace-bgc"]
+cache = "pace-bgc-tiles"
+match = [
+  ["tiles-chl-pace", "chl-pace.json"],
+  ["tiles-chl-pace-8d", "chl-pace-8d.json"],
+  ["tiles-phytoc-pace", "phytoc-pace.json"],
+  ["tiles-phytoc-pace-8d", "phytoc-pace-8d.json"],
+  ["tiles-poc-pace", "poc-pace.json"],
+  ["tiles-poc-pace-8d", "poc-pace-8d.json"],
+  ["tiles-pic-pace", "pic-pace.json"],
+  ["tiles-pic-pace-8d", "pic-pace-8d.json"],
+]
+
+[products.pace-moana]
+title = "PACE OCI picoplankton (MOANA): Prochlorococcus, Synechococcus, picoeukaryotes, Atlantic"
+step = "moana"
+roots = ["pro-pace.json", "pro-pace-8d.json", "syn-pace.json", "syn-pace-8d.json", "peuk-pace.json", "peuk-pace-8d.json"]
+writes = ["pro-pace*.json", "syn-pace*.json", "peuk-pace*.json"]
+max_age_hours = 72
+r2_only = true
+namespace = ["python3", "scripts/fetch-pace.py", "--namespace", "--only=pace-moana"]
+
+[products.pace-moana.tiles]
+build = ["python3", "scripts/fetch-pace.py", "--tiles", "--only=pace-moana"]
+key = ["python3", "scripts/fetch-pace.py", "--tile-key", "--only=pace-moana"]
+cache = "pace-moana-tiles"
+match = [
+  ["tiles-pro-pace", "pro-pace.json"],
+  ["tiles-pro-pace-8d", "pro-pace-8d.json"],
+  ["tiles-syn-pace", "syn-pace.json"],
+  ["tiles-syn-pace-8d", "syn-pace-8d.json"],
+  ["tiles-peuk-pace", "peuk-pace.json"],
+  ["tiles-peuk-pace-8d", "peuk-pace-8d.json"],
+]
+
+[products.pace-npp]
+title = "PACE OCI net primary production (CAFE)"
+step = "npp"
+roots = ["npp-pace.json", "npp-pace-8d.json"]
+writes = ["npp-pace*.json"]
+max_age_hours = 108
+r2_only = true
+namespace = ["python3", "scripts/fetch-pace.py", "--namespace", "--only=pace-npp"]
+
+[products.pace-npp.tiles]
+build = ["python3", "scripts/fetch-pace.py", "--tiles", "--only=pace-npp"]
+key = ["python3", "scripts/fetch-pace.py", "--tile-key", "--only=pace-npp"]
+cache = "pace-npp-tiles"
+match = [
+  ["tiles-npp-pace", "npp-pace.json"],
+  ["tiles-npp-pace-8d", "npp-pace-8d.json"],
+]
+
+[products.pace-aop]
+title = "PACE OCI fluorescence line height"
+step = "aop"
+roots = ["nflh-pace.json", "nflh-pace-8d.json"]
+writes = ["nflh-pace*.json"]
+max_age_hours = 72
+r2_only = true
+namespace = ["python3", "scripts/fetch-pace.py", "--namespace", "--only=pace-aop"]
+
+[products.pace-aop.tiles]
+build = ["python3", "scripts/fetch-pace.py", "--tiles", "--only=pace-aop"]
+key = ["python3", "scripts/fetch-pace.py", "--tile-key", "--only=pace-aop"]
+cache = "pace-aop-tiles"
+match = [
+  ["tiles-nflh-pace", "nflh-pace.json"],
+  ["tiles-nflh-pace-8d", "nflh-pace-8d.json"],
+]
+
+[products.pace-kd]
+title = "PACE OCI diffuse attenuation at 490 nm"
+step = "kd"
+roots = ["kd490-pace.json", "kd490-pace-8d.json"]
+writes = ["kd490-pace*.json"]
+max_age_hours = 72
+r2_only = true
+namespace = ["python3", "scripts/fetch-pace.py", "--namespace", "--only=pace-kd"]
+
+[products.pace-kd.tiles]
+build = ["python3", "scripts/fetch-pace.py", "--tiles", "--only=pace-kd"]
+key = ["python3", "scripts/fetch-pace.py", "--tile-key", "--only=pace-kd"]
+cache = "pace-kd-tiles"
+match = [
+  ["tiles-kd490-pace", "kd490-pace.json"],
+  ["tiles-kd490-pace-8d", "kd490-pace-8d.json"],
+]
+
+[products.pace-par]
+title = "PACE OCI photosynthetically available radiation"
+step = "par"
+roots = ["par-pace.json", "par-pace-8d.json"]
+writes = ["par-pace*.json"]
+max_age_hours = 96
+r2_only = true
+namespace = ["python3", "scripts/fetch-pace.py", "--namespace", "--only=pace-par"]
+
+[products.pace-par.tiles]
+build = ["python3", "scripts/fetch-pace.py", "--tiles", "--only=pace-par"]
+key = ["python3", "scripts/fetch-pace.py", "--tile-key", "--only=pace-par"]
+cache = "pace-par-tiles"
+match = [
+  ["tiles-par-pace", "par-pace.json"],
+  ["tiles-par-pace-8d", "par-pace-8d.json"],
+]
+
+[products.pace-iop]
+title = "PACE OCI inherent optical properties at 442 nm"
+step = "iop"
+roots = ["adg442-pace.json", "adg442-pace-8d.json", "aph442-pace.json", "aph442-pace-8d.json", "bbp442-pace.json", "bbp442-pace-8d.json"]
+writes = ["adg442-pace*.json", "aph442-pace*.json", "bbp442-pace*.json"]
+max_age_hours = 72
+r2_only = true
+namespace = ["python3", "scripts/fetch-pace.py", "--namespace", "--only=pace-iop"]
+
+[products.pace-iop.tiles]
+build = ["python3", "scripts/fetch-pace.py", "--tiles", "--only=pace-iop"]
+key = ["python3", "scripts/fetch-pace.py", "--tile-key", "--only=pace-iop"]
+cache = "pace-iop-tiles"
+match = [
+  ["tiles-adg442-pace", "adg442-pace.json"],
+  ["tiles-adg442-pace-8d", "adg442-pace-8d.json"],
+  ["tiles-aph442-pace", "aph442-pace.json"],
+  ["tiles-aph442-pace-8d", "aph442-pace-8d.json"],
+  ["tiles-bbp442-pace", "bbp442-pace.json"],
+  ["tiles-bbp442-pace-8d", "bbp442-pace-8d.json"],
+]
+
+[products.pace-aer]
+title = "PACE OCI aerosol optical depth and UV aerosol index, 0.1 degree"
+step = "aer"
+roots = ["aod550-pace.json", "aod550-pace-8d.json", "uvai-pace.json", "uvai-pace-8d.json"]
+writes = ["aod550-pace*.json", "uvai-pace*.json"]
+max_age_hours = 72
+r2_only = true
+namespace = ["python3", "scripts/fetch-pace.py", "--namespace", "--only=pace-aer"]
+
+[products.pace-aer.tiles]
+build = ["python3", "scripts/fetch-pace.py", "--tiles", "--only=pace-aer"]
+key = ["python3", "scripts/fetch-pace.py", "--tile-key", "--only=pace-aer"]
+cache = "pace-aer-tiles"
+match = [
+  ["tiles-aod550-pace", "aod550-pace.json"],
+  ["tiles-aod550-pace-8d", "aod550-pace-8d.json"],
+  ["tiles-uvai-pace", "uvai-pace.json"],
+  ["tiles-uvai-pace-8d", "uvai-pace-8d.json"],
+]
+
+[products.pace-trgas]
+title = "PACE OCI total ozone and nitrogen dioxide"
+step = "trgas"
+roots = ["o3-pace.json", "o3-pace-8d.json", "no2-pace.json", "no2-pace-8d.json"]
+writes = ["o3-pace*.json", "no2-pace*.json"]
+max_age_hours = 80
+r2_only = true
+namespace = ["python3", "scripts/fetch-pace.py", "--namespace", "--only=pace-trgas"]
+
+[products.pace-trgas.tiles]
+build = ["python3", "scripts/fetch-pace.py", "--tiles", "--only=pace-trgas"]
+key = ["python3", "scripts/fetch-pace.py", "--tile-key", "--only=pace-trgas"]
+cache = "pace-trgas-tiles"
+match = [
+  ["tiles-o3-pace", "o3-pace.json"],
+  ["tiles-o3-pace-8d", "o3-pace-8d.json"],
+  ["tiles-no2-pace", "no2-pace.json"],
+  ["tiles-no2-pace-8d", "no2-pace-8d.json"],
+]
+
+[products.pace-cloud]
+title = "PACE OCI cloud cover, top height, optical thickness and particle size"
+step = "cloud"
+roots = ["cloud-pace.json", "cloud-pace-8d.json", "cth-pace.json", "cth-pace-8d.json", "cot-pace.json", "cot-pace-8d.json", "cer-pace.json", "cer-pace-8d.json"]
+writes = ["cloud-pace*.json", "cth-pace*.json", "cot-pace*.json", "cer-pace*.json"]
+max_age_hours = 72
+r2_only = true
+namespace = ["python3", "scripts/fetch-pace.py", "--namespace", "--only=pace-cloud"]
+
+[products.pace-cloud.tiles]
+build = ["python3", "scripts/fetch-pace.py", "--tiles", "--only=pace-cloud"]
+key = ["python3", "scripts/fetch-pace.py", "--tile-key", "--only=pace-cloud"]
+cache = "pace-cloud-tiles"
+match = [
+  ["tiles-cloud-pace", "cloud-pace.json"],
+  ["tiles-cloud-pace-8d", "cloud-pace-8d.json"],
+  ["tiles-cth-pace", "cth-pace.json"],
+  ["tiles-cth-pace-8d", "cth-pace-8d.json"],
+  ["tiles-cot-pace", "cot-pace.json"],
+  ["tiles-cot-pace-8d", "cot-pace-8d.json"],
+  ["tiles-cer-pace", "cer-pace.json"],
+  ["tiles-cer-pace-8d", "cer-pace-8d.json"],
+]

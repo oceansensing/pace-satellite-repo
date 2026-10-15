@@ -1,15 +1,15 @@
 # Publish this repository's products: fetch with the site's pipelines,
-# validate against the site's contract, and publish one build to GitHub Pages
-# and to Cloudflare R2. Written by the site's pipeline/scaffold/new-origin.py
-# from the sibling data repositories' workflow.
+# validate against the site's contract, and publish one build: the roots and
+# tiles to Cloudflare R2 alone, the status beside them on GitHub Pages. Written
+# 2026-10-14 from mercator-model-bgc-repo's workflow, with a tile cache per
+# product.
 #
 # **Dispatch-only until a dispatched run has published a tree**: prove the
 # pipeline, THEN uncomment the schedule below, in the same commit as the docs.
-# `status/status.json` reports `schedule: null` until then, and the site's
-# watchdog names an origin with no schedule on sight.
 #
-# Needs, from the owner: `PIPELINES_SSH_KEY` (this repository's read-only
-# deploy key on oceansensing.github.io) and the organization's R2_* secrets.
+# Needs: `PIPELINES_SSH_KEY` (this repository's read-only deploy key on
+# oceansensing.github.io) and the organization's three R2_* secrets. NASA's
+# ocean color archive answers its subsets without a login.
 
 name: Publish
 
@@ -20,7 +20,8 @@ on:
         description: 'Rebuild even if the probe says the tree is current'
         type: boolean
         default: false
-  # No schedule: nothing to publish until its upstream is live.
+  # schedule:
+  #   - cron: '41 */2 * * *'
 
 permissions: {}
 
@@ -31,7 +32,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # A first run builds every product with no cache (measured locally: about
+    # six minutes of fetching, 44 layers); a day's later runs restore.
+    timeout-minutes: 60
     permissions:
       contents: read
     outputs:
@@ -69,9 +72,13 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
+      - name: Install what the fetcher needs
+        run: pip install --no-cache-dir -r site/scripts/requirements-pace.txt
       - name: Unit-test the orchestrator
         working-directory: site
         run: python3 pipeline/test_orchestrate.py
+      - name: Self-test fetch-pace.py
+        run: python3 site/scripts/fetch-pace.py --self-test
       - name: Seed the stage from the last publish
         env:
           PIPELINE_ROOT: ${{ github.workspace }}
@@ -81,16 +88,150 @@ jobs:
         env:
           PIPELINE_ROOT: ${{ github.workspace }}
         run: python3 site/pipeline/orchestrate.py plan --mode full
+      # **A product's tiles, one cache each**: keyed by the day and the stream
+      # `plan` names, the published day's the fallback, restored before the run
+      # and saved after a build, so only a day's first run reads NASA for them.
+      - name: Restore pace-bgc tiles
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-bgc-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-bgc-tiles }}
+          restore-keys: ${{ steps.plan.outputs.cache-held-pace-bgc-tiles }}
+      - name: Restore pace-moana tiles
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-moana-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-moana-tiles }}
+          restore-keys: ${{ steps.plan.outputs.cache-held-pace-moana-tiles }}
+      - name: Restore pace-npp tiles
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-npp-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-npp-tiles }}
+          restore-keys: ${{ steps.plan.outputs.cache-held-pace-npp-tiles }}
+      - name: Restore pace-aop tiles
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-aop-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-aop-tiles }}
+          restore-keys: ${{ steps.plan.outputs.cache-held-pace-aop-tiles }}
+      - name: Restore pace-kd tiles
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-kd-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-kd-tiles }}
+          restore-keys: ${{ steps.plan.outputs.cache-held-pace-kd-tiles }}
+      - name: Restore pace-par tiles
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-par-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-par-tiles }}
+          restore-keys: ${{ steps.plan.outputs.cache-held-pace-par-tiles }}
+      - name: Restore pace-iop tiles
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-iop-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-iop-tiles }}
+          restore-keys: ${{ steps.plan.outputs.cache-held-pace-iop-tiles }}
+      - name: Restore pace-aer tiles
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-aer-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-aer-tiles }}
+          restore-keys: ${{ steps.plan.outputs.cache-held-pace-aer-tiles }}
+      - name: Restore pace-trgas tiles
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-trgas-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-trgas-tiles }}
+          restore-keys: ${{ steps.plan.outputs.cache-held-pace-trgas-tiles }}
+      - name: Restore pace-cloud tiles
+        uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-cloud-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-cloud-tiles }}
+          restore-keys: ${{ steps.plan.outputs.cache-held-pace-cloud-tiles }}
       - name: Fetch, validate, assemble
         id: run
         env:
           PIPELINE_ROOT: ${{ github.workspace }}
         run: python3 site/pipeline/orchestrate.py run
+      - name: Save pace-bgc tiles
+        if: steps.run.outputs.built-pace-bgc-tiles == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-bgc-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-bgc-tiles }}
+      - name: Save pace-moana tiles
+        if: steps.run.outputs.built-pace-moana-tiles == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-moana-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-moana-tiles }}
+      - name: Save pace-npp tiles
+        if: steps.run.outputs.built-pace-npp-tiles == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-npp-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-npp-tiles }}
+      - name: Save pace-aop tiles
+        if: steps.run.outputs.built-pace-aop-tiles == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-aop-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-aop-tiles }}
+      - name: Save pace-kd tiles
+        if: steps.run.outputs.built-pace-kd-tiles == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-kd-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-kd-tiles }}
+      - name: Save pace-par tiles
+        if: steps.run.outputs.built-pace-par-tiles == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-par-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-par-tiles }}
+      - name: Save pace-iop tiles
+        if: steps.run.outputs.built-pace-iop-tiles == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-iop-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-iop-tiles }}
+      - name: Save pace-aer tiles
+        if: steps.run.outputs.built-pace-aer-tiles == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-aer-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-aer-tiles }}
+      - name: Save pace-trgas tiles
+        if: steps.run.outputs.built-pace-trgas-tiles == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-trgas-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-trgas-tiles }}
+      - name: Save pace-cloud tiles
+        if: steps.run.outputs.built-pace-cloud-tiles == 'true'
+        uses: actions/cache/save@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ${{ steps.plan.outputs.cache-paths-pace-cloud-tiles }}
+          key: ${{ steps.plan.outputs.cache-key-pace-cloud-tiles }}
       - name: Upload the site
         if: steps.run.outputs.deploy == 'true'
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
           path: out
+
+      # What this origin publishes to R2 alone (the site pipeline's D13, its
+      # note of 2026-10-09), and R2's whole status: the R2 job lays it beside
+      # the site. Public for the day it is kept, so open data only.
+      - name: Hand on what R2 alone carries
+        if: steps.run.outputs.deploy == 'true'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: r2-only
+          path: out-r2
+          retention-days: 1
       - name: Upload the branch content
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
@@ -135,7 +276,10 @@ jobs:
     needs: build
     if: needs.build.outputs.deploy == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # A day's publish uploads about 9,000 tiles (44 layers, 130-490 each,
+    # measured locally 2026-10-14); only what changed is uploaded, and at the
+    # fields' measured pace (15,256 files in 26 minutes) that is about 15.
+    timeout-minutes: 60
     permissions:
       contents: read
     steps:
@@ -151,6 +295,12 @@ jobs:
         with:
           name: github-pages
           path: pages
+
+      - name: Download what R2 alone carries
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: r2-only
+          path: r2-only
       - name: Test the publish script
         run: python3 code/pipeline/test_publish_r2.py
       - name: Publish to R2
@@ -163,4 +313,4 @@ jobs:
         run: |
           mkdir site
           tar -xf pages/artifact.tar -C site
-          python3 code/pipeline/publish_r2.py site "$GITHUB_REPOSITORY"
+          python3 code/pipeline/publish_r2.py site "$GITHUB_REPOSITORY" --with r2-only

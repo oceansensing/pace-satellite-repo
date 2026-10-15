@@ -139,7 +139,8 @@ fact from a guess that aged.
 - **Not `orb-satellite-pace-repo`**, which holds the University of Delaware ORB lab's PACE products from that lab's own server. This one is for products from NASA's own services.
 - **The roots, the fetcher and the contract are one list.** A quantity is a stem in the site's
   `packages/ocean-map/undrawn.ts` (`PACE_LAYERS`), which the contract reads for its roots and the fetcher
-  (`scripts/fetch-pace.py`) holds itself to; `products.toml` here names the same 44 roots. Add a quantity
+  (`scripts/fetch-pace.py`) holds itself to; `products.toml` here names the same 66 roots, three a stem (the
+  day, the 8-day mean and the mean's ages, each with its tile pair). Add a quantity
   in the site first, then here.
 - **A product's restore needs its held key.** Each tile cache's Restore step takes
   `cache-held-<product>-tiles` as its `restore-keys`, or a product held after its probe answered goes out

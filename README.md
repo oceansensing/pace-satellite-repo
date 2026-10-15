@@ -10,7 +10,7 @@ shared doc doctrine.
 
 The ocean color and atmosphere suites of PACE's Ocean Color Instrument (OCI), **each quantity as its newest
 day and as the mean of each cell's clear days over the eight newest days**, on NASA's 4 km grid (0.1 degree
-for the aerosols, the finest NASA maps them at). Twenty-two quantities, 44 roots, each a coarse overview
+for the aerosols, the finest NASA maps them at). Twenty-two quantities, 66 roots, each a coarse overview
 pointing at its tiles at full resolution:
 
 | Product | Quantities (root stems) | Grid |
@@ -26,8 +26,10 @@ pointing at its tiles at full resolution:
 | `pace-trgas` | total ozone, total nitrogen dioxide (`o3`, `no2`) | 4 km |
 | `pace-cloud` | cloud cover, top height, optical thickness, particle size (`cloud`, `cth`, `cot`, `cer`) | 4 km |
 
-Each stem is two roots: `<stem>-pace.json`, the day, and `<stem>-pace-8d.json`, the 8-day mean, each with
-its tiles in `tiles-<root>/`. A quantity read at one wavelength names its band in its stem and in its
+Each stem is three roots: `<stem>-pace.json`, the day; `<stem>-pace-8d.json`, the 8-day mean; and
+`<stem>-pace-8d-age.json`, each mean cell's age — whole days between the newest day and the newest day that
+saw the cell, on the mean's own grid and tiles, linked from the mean's header (`age`). Each has its tiles in
+`tiles-<root>/`. A quantity read at one wavelength names its band in its stem and in its
 header (`wavelength`, nanometers).
 
 **Published to Cloudflare R2 alone** (`r2_only` in `pipeline/products.toml`): the roots and tiles go to the

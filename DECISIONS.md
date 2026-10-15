@@ -30,3 +30,10 @@ other bands join without a rename.
 
 Every product is `r2_only` (the site pipeline's D13, its note of 2026-10-09): the roots and tiles go to the
 second host only, the status to Pages beside the other origins'.
+
+## D5 — 2026-10-15 — Each 8-day mean's cells carry their age, at full resolution
+
+Beside each 8-day mean, a grid of each cell's age (the owner, 2026-10-15): whole days between the newest day
+and the newest day that saw the cell, on the mean's own 4 km lattice and tiles, null exactly where the mean
+is, linked from the mean's header (`age`). Not an age per 0.25 degree block, Sentinel-3's road (about 67
+MB), which bounds a cell's age without stating it. 22 roots more, 66 in all; about 2 GB more on R2.

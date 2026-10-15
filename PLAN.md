@@ -52,6 +52,15 @@ R2 job uploaded 18,315 files in 15 minutes, the bucket then equal to the build. 
 alone, its products R2's (`products: {}` there, as every product is `r2_only`). **Scheduled since**,
 every two hours at 41 past.
 
+## 2026-10-15: each 8-day mean's per-cell age
+
+The owner chose an exact age for every 4 km cell of every 8-day mean over an age per 0.25 degree block
+(DECISIONS D5). Built in the site's fetcher and measured on a local build of `pace-bgc` for 2026-10-13:
+about 106 MB and 493 tiles of ages per 4 km quantity, against the mean's 122-156 MB, so about 2 GB for all
+22. Chlorophyll's ages ran 0 to 7 days. The site's contract check holds each age to its mean: one lattice,
+one window, the same empty cells, whole days within the window. The tiles' cache key moved to `v2`, so no
+cache saved before the ages is restored without them.
+
 ## Open
 
 1. A week of scheduled runs, read: the budgets against NASA's real posting times, the caches' size.

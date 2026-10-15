@@ -59,7 +59,9 @@ The owner chose an exact age for every 4 km cell of every 8-day mean over an age
 about 106 MB and 493 tiles of ages per 4 km quantity, against the mean's 122-156 MB, so about 2 GB for all
 22. Chlorophyll's ages ran 0 to 7 days. The site's contract check holds each age to its mean: one lattice,
 one window, the same empty cells, whole days within the window. The tiles' cache key moved to `v2`, so no
-cache saved before the ages is restored without them.
+cache saved before the ages is restored without them. **Pushed and run** (`110ec0b`): the dispatched run
+`38739622937`, 13:04-13:39 UTC, green — all ten products fresh, R2 equal to the build, 27,769 files, 18,899
+uploaded and none deleted, the 22 age roots and their tiles among them.
 
 ## Open
 

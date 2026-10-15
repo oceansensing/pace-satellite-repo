@@ -43,9 +43,15 @@ file's fastest axis), so the spectrum would come from the whole files (843 MB a 
 every band, a new kind in the contract. A quantity at one wavelength already names its band, so other bands
 of Kd, absorption and backscatter join as roots of their own.
 
+## 2026-10-15: the first run, and the schedule
+
+The secrets set (the deploy key and the two R2 secrets shared), then the dispatched run 38680413668:
+green, every product `fresh` — day 2026-10-13 (PAR and NPP 10-12), all 44 roots. The build job took 12
+minutes, its fetch-and-assemble step 9 (the cloud suite the longest, 3), the ten tile caches saved; the
+R2 job uploaded 18,315 files in 15 minutes, the bucket then equal to the build. Pages carries the status
+alone, its products R2's (`products: {}` there, as every product is `r2_only`). **Scheduled since**,
+every two hours at 41 past.
+
 ## Open
 
-1. The secrets: this repository's read-only deploy key on the site (`PIPELINES_SSH_KEY`) and the
-   organization's `R2_ACCESS_KEY_ID` and `R2_SECRET_ACCESS_KEY` shared with it. Pages is on.
-2. A dispatched run, read: its status, a root on R2, the R2 job green.
-3. Then the schedule, uncommented in the same commit as the record of that run.
+1. A week of scheduled runs, read: the budgets against NASA's real posting times, the caches' size.

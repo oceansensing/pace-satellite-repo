@@ -144,8 +144,8 @@ fact from a guess that aged.
 - **A product's restore needs its held key.** Each tile cache's Restore step takes
   `cache-held-<product>-tiles` as its `restore-keys`, or a product held after its probe answered goes out
   without its tiles, and R2 drops them.
-- **The schedule waits on a read run.** Dispatch first; uncomment the cron only after a dispatched run's
-  status, a root on R2 and the R2 job have been read.
+- **The schedule waited on a read run** (the first, 38680413668, 2026-10-15): every two hours since. A
+  product added later is dispatched and read before it is trusted on the schedule.
 
 ### Rules inherited from the sibling data repositories
 

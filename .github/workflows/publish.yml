@@ -4,8 +4,11 @@
 # 2026-10-14 from mercator-model-bgc-repo's workflow, with a tile cache per
 # product.
 #
-# **Dispatch-only until a dispatched run has published a tree**: prove the
-# pipeline, THEN uncomment the schedule below, in the same commit as the docs.
+# **Scheduled since 2026-10-15**, after the dispatched run 38680413668
+# published a tree (build, Pages and R2 green; 18,315 files on R2) — prove the
+# pipeline, then turn the schedule on. Every two hours: NASA posts each suite
+# once a day, at times that differ by suite, and a run with nothing new costs
+# the catalog's ten answers and the caches' restores.
 #
 # Needs: `PIPELINES_SSH_KEY` (this repository's read-only deploy key on
 # oceansensing.github.io) and the organization's three R2_* secrets. NASA's
@@ -20,8 +23,8 @@ on:
         description: 'Rebuild even if the probe says the tree is current'
         type: boolean
         default: false
-  # schedule:
-  #   - cron: '41 */2 * * *'
+  schedule:
+    - cron: '41 */2 * * *'
 
 permissions: {}
 

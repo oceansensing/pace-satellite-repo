@@ -1,0 +1,38 @@
+{
+ "schema": 1,
+ "generated": "2026-10-17T20:45:27Z",
+ "mode": "full",
+ "products": {
+  "pace-bgc": {
+   "tile_key": "v2-pace-bgc-20261016-NRTV32"
+  },
+  "pace-moana": {
+   "tile_key": "v2-pace-moana-20261016-NRTV32"
+  },
+  "pace-npp": {
+   "tile_key": "v2-pace-npp-20261015-NRTV32",
+   "held_key": "v2-pace-npp-20261014-NRTV32"
+  },
+  "pace-aop": {
+   "tile_key": "v2-pace-aop-20261016-NRTV32"
+  },
+  "pace-kd": {
+   "tile_key": "v2-pace-kd-20261016-NRTV32"
+  },
+  "pace-par": {
+   "tile_key": "v2-pace-par-20261015-NRTV32"
+  },
+  "pace-iop": {
+   "tile_key": "v2-pace-iop-20261016-NRTV32"
+  },
+  "pace-aer": {
+   "tile_key": "v2-pace-aer-20261016-NRTV31"
+  },
+  "pace-trgas": {
+   "tile_key": "v2-pace-trgas-20261015-NRTV30"
+  },
+  "pace-cloud": {
+   "tile_key": "v2-pace-cloud-20261015-NRTV31"
+  }
+ }
+}

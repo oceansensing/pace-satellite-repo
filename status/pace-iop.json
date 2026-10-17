@@ -1,0 +1,91 @@
+{
+ "schema": 1,
+ "product": "pace-iop",
+ "title": "PACE OCI inherent optical properties at 442 nm",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-10-17T20:47:24Z",
+ "updated": "2026-10-17T16:54:43Z",
+ "hour": "2026-10-16T00:00:00Z",
+ "modelRun": null,
+ "source": "NASA OB.DAAC, PACE OCI",
+ "hours": [
+  "2026-10-16T00:00:00Z"
+ ],
+ "files": {
+  "adg442-pace-8d-age.json": {
+   "bytes": 4064788,
+   "sha256": "deb955739b2df325ce57ef082cc48d6fd6605e22d4f6605ef86821644f8a5058"
+  },
+  "adg442-pace-8d.json": {
+   "bytes": 5782341,
+   "sha256": "185538c056c5e19363de26710d1871e56bffc646b7b2ca43502d05cd54e98d49"
+  },
+  "adg442-pace.json": {
+   "bytes": 5351735,
+   "sha256": "bc90fc91eb80e423cb4961fa7ab48d8a16866ec6ebc5d63fef3291c901c35728"
+  },
+  "aph442-pace-8d-age.json": {
+   "bytes": 4071322,
+   "sha256": "1bcfcc1cef4fe0cc4beec769ea82781d42778426133ecf44fe101f909339cf9f"
+  },
+  "aph442-pace-8d.json": {
+   "bytes": 5616280,
+   "sha256": "662189ee41e319c7fb424bb931530133bbc320dc3db8784691537a39549033c1"
+  },
+  "aph442-pace.json": {
+   "bytes": 5309829,
+   "sha256": "aa9f036c27b3e5d1adf5499983e2e1438fe68d5d38be66511756054db8cf0edf"
+  },
+  "bbp442-pace-8d-age.json": {
+   "bytes": 4063186,
+   "sha256": "88dd6b627077b4015ce52cdbe32f5cad5d56fe85a5e5c22a1846a368404db148"
+  },
+  "bbp442-pace-8d.json": {
+   "bytes": 5886847,
+   "sha256": "31b7ff8e20f43be233ef318341d58f1b41dc3960cf13d990842f483d42cdc1eb"
+  },
+  "bbp442-pace.json": {
+   "bytes": 5379551,
+   "sha256": "929f0ef97862394be609d6d25a2527aa84cb04ff45a36985736eb8adc46c3c4e"
+  }
+ },
+ "tiles": {
+  "tiles-adg442-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-adg442-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-adg442-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-aph442-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-aph442-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-aph442-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-bbp442-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-bbp442-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-bbp442-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  }
+ }
+}

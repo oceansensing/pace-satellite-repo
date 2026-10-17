@@ -1,0 +1,48 @@
+{
+ "schema": 1,
+ "generated": "2026-10-17T20:47:24Z",
+ "mode": "full",
+ "fates": {
+  "pace-bgc": "fresh",
+  "pace-moana": "fresh",
+  "pace-npp": "fresh",
+  "pace-aop": "fresh",
+  "pace-kd": "fresh",
+  "pace-par": "fresh",
+  "pace-iop": "fresh",
+  "pace-aer": "fresh",
+  "pace-trgas": "fresh",
+  "pace-cloud": "fresh"
+ },
+ "reasons": {},
+ "built": {
+  "pace-npp-tiles": true
+ },
+ "withheld": {
+  "pace-bgc": {},
+  "pace-moana": {},
+  "pace-npp": {},
+  "pace-aop": {},
+  "pace-kd": {},
+  "pace-par": {},
+  "pace-iop": {},
+  "pace-aer": {},
+  "pace-trgas": {},
+  "pace-cloud": {}
+ },
+ "deploy": true,
+ "notes": [],
+ "behind": [],
+ "tile_keys": {
+  "pace-bgc": "v2-pace-bgc-20261016-NRTV32",
+  "pace-moana": "v2-pace-moana-20261016-NRTV32",
+  "pace-npp": "v2-pace-npp-20261015-NRTV32",
+  "pace-aop": "v2-pace-aop-20261016-NRTV32",
+  "pace-kd": "v2-pace-kd-20261016-NRTV32",
+  "pace-par": "v2-pace-par-20261015-NRTV32",
+  "pace-iop": "v2-pace-iop-20261016-NRTV32",
+  "pace-aer": "v2-pace-aer-20261016-NRTV31",
+  "pace-trgas": "v2-pace-trgas-20261015-NRTV30",
+  "pace-cloud": "v2-pace-cloud-20261015-NRTV31"
+ }
+}

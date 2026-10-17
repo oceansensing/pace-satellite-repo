@@ -1,0 +1,115 @@
+{
+ "schema": 1,
+ "product": "pace-cloud",
+ "title": "PACE OCI cloud cover, top height, optical thickness and particle size",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-10-17T20:47:24Z",
+ "updated": "2026-10-16T14:58:06Z",
+ "hour": "2026-10-15T00:00:00Z",
+ "modelRun": null,
+ "source": "NASA OB.DAAC, PACE OCI",
+ "hours": [
+  "2026-10-15T00:00:00Z"
+ ],
+ "files": {
+  "cer-pace-8d-age.json": {
+   "bytes": 2610388,
+   "sha256": "a28208ff4e789b25189d7a2c9006d6bd117cbe2b2d1ed3050a3b6bf70fab8f96"
+  },
+  "cer-pace-8d.json": {
+   "bytes": 4997159,
+   "sha256": "7f13d431009270ec0ab6fa1e338692448582189b1444a8acef596b8b6c760121"
+  },
+  "cer-pace.json": {
+   "bytes": 4989208,
+   "sha256": "90b8eabeea3479d314cdd145bd075a49cc36959216ee2196eb49bfcb09521c4f"
+  },
+  "cloud-pace-8d-age.json": {
+   "bytes": 2561763,
+   "sha256": "8b1d826b3a93a7985a950ab36928be93720c34176828acadf6f72c49db9537fc"
+  },
+  "cloud-pace-8d.json": {
+   "bytes": 4915943,
+   "sha256": "d836436044e434cb2d7907cf2e881fb47c666471018dea2d34b3e6c67551c1cf"
+  },
+  "cloud-pace.json": {
+   "bytes": 3451582,
+   "sha256": "33172c745a095f960c19d2d78cddf5c7c3175f64d008976bd45783f890548041"
+  },
+  "cot-pace-8d-age.json": {
+   "bytes": 2610385,
+   "sha256": "685885cfac2c1db94b8fe2f900ab40ca850236456c28913c1c72861e8e9446fd"
+  },
+  "cot-pace-8d.json": {
+   "bytes": 3919286,
+   "sha256": "e7731452cdaf38c0b50ed5c158ed0fa7c81eef589438eca477450541fca9908d"
+  },
+  "cot-pace.json": {
+   "bytes": 4351056,
+   "sha256": "2a51444374e43cd3a42a42c46a74a6e59693351aa13e92613bcfe93269380bfc"
+  },
+  "cth-pace-8d-age.json": {
+   "bytes": 2576488,
+   "sha256": "5cbd0f29f6bb21b53bda73767397c81d013f33d0ed990e19d45f32eddb3d1d70"
+  },
+  "cth-pace-8d.json": {
+   "bytes": 4152622,
+   "sha256": "8d3c8450cd0ac96f7dcb0d07300d93ac073e093754cd17d05ee27d51463e288d"
+  },
+  "cth-pace.json": {
+   "bytes": 4355090,
+   "sha256": "c2bbb0b0bf7776d70cdeff3336afd656d9f46d05b1de346fb681f08447854b97"
+  }
+ },
+ "tiles": {
+  "tiles-cer-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cer-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cer-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cloud-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cloud-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cloud-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cot-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cot-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cot-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cth-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cth-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-cth-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  }
+ }
+}

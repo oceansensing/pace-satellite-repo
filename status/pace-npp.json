@@ -1,0 +1,43 @@
+{
+ "schema": 1,
+ "product": "pace-npp",
+ "title": "PACE OCI net primary production (CAFE)",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-10-24T10:47:28Z",
+ "updated": "2026-10-24T01:10:40Z",
+ "hour": "2026-10-21T00:00:00Z",
+ "modelRun": null,
+ "source": "NASA OB.DAAC, PACE OCI",
+ "hours": [
+  "2026-10-21T00:00:00Z"
+ ],
+ "files": {
+  "npp-pace-8d-age.json": {
+   "bytes": 4028203,
+   "sha256": "fd62d600b103812efede37503c5b2f3e693eb8f8ce3e5e7c922206d8385457cd"
+  },
+  "npp-pace-8d.json": {
+   "bytes": 4806369,
+   "sha256": "057c8e477fafe7e209b3e236efc074c103e1f9bff1be670290dfc682c4840fb2"
+  },
+  "npp-pace.json": {
+   "bytes": 5085211,
+   "sha256": "b073344f0bdc2d8ad04f2400a1c8f366d0c7907ad6536882ef6d3e7b35c9d738"
+  }
+ },
+ "tiles": {
+  "tiles-npp-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-npp-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-npp-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  }
+ }
+}

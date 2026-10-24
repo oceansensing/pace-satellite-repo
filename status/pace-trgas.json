@@ -1,0 +1,67 @@
+{
+ "schema": 1,
+ "product": "pace-trgas",
+ "title": "PACE OCI total ozone and nitrogen dioxide",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-10-24T10:47:28Z",
+ "updated": "2026-10-23T19:03:12Z",
+ "hour": "2026-10-22T00:00:00Z",
+ "modelRun": null,
+ "source": "NASA OB.DAAC, PACE OCI",
+ "hours": [
+  "2026-10-22T00:00:00Z"
+ ],
+ "files": {
+  "no2-pace-8d-age.json": {
+   "bytes": 3202717,
+   "sha256": "a4afda633eaf4cf9c578fcb7ed4061463054919a5c5e14fe5d89bcf7d26324d4"
+  },
+  "no2-pace-8d.json": {
+   "bytes": 5104328,
+   "sha256": "5eca03fb5f0cb91259a9c73ba1cb04530bfd20085d2f8a570078935a1430a464"
+  },
+  "no2-pace.json": {
+   "bytes": 5145807,
+   "sha256": "2f32430a87a204bc03bf01312c67ed5f4e398c6d7670931102e041e942e7f0ce"
+  },
+  "o3-pace-8d-age.json": {
+   "bytes": 2725335,
+   "sha256": "951729696e996b044250b24c786e65a12a4e2ed44440853b69a32c9bb317bf0e"
+  },
+  "o3-pace-8d.json": {
+   "bytes": 4363707,
+   "sha256": "3cd9d65d7e88c43e1e08bd8670ca4eecc8d8811449ea3733ab450c4bff43870b"
+  },
+  "o3-pace.json": {
+   "bytes": 4422656,
+   "sha256": "a3bbe549c7bba0bcb66275e7d83fe382f3ad43cb161ba41b03ae10084885e3be"
+  }
+ },
+ "tiles": {
+  "tiles-no2-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-no2-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-no2-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-o3-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-o3-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-o3-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  }
+ }
+}

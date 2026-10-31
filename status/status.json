@@ -1,0 +1,274 @@
+{
+ "schema": 2,
+ "contract": 1,
+ "generated": "2026-10-31T20:46:34Z",
+ "mode": "full",
+ "run": {
+  "id": "41240313372",
+  "url": "https://github.com/oceansensing/pace-satellite-repo/actions/runs/41240313372"
+ },
+ "schedule": {
+  "crons": [
+   "41 */2 * * *"
+  ],
+  "longestGapHours": 2.0
+ },
+ "products": {
+  "pace-bgc": {
+   "title": "PACE OCI biogeochemistry: chlorophyll-a, phytoplankton carbon, POC and PIC",
+   "roots": [
+    "chl-pace.json",
+    "chl-pace-8d.json",
+    "chl-pace-8d-age.json",
+    "phytoc-pace.json",
+    "phytoc-pace-8d.json",
+    "phytoc-pace-8d-age.json",
+    "poc-pace.json",
+    "poc-pace-8d.json",
+    "poc-pace-8d-age.json",
+    "pic-pace.json",
+    "pic-pace-8d.json",
+    "pic-pace-8d-age.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-31T20:46:34Z",
+   "updated": "2026-10-30T12:51:46Z",
+   "hour": "2026-10-29T00:00:00Z",
+   "modelRun": null,
+   "source": "NASA OB.DAAC, PACE OCI",
+   "hours": [
+    "2026-10-29T00:00:00Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 68.78,
+   "nearestOffsetHours": 68.78
+  },
+  "pace-moana": {
+   "title": "PACE OCI picoplankton (MOANA): Prochlorococcus, Synechococcus, picoeukaryotes, Atlantic",
+   "roots": [
+    "pro-pace.json",
+    "pro-pace-8d.json",
+    "pro-pace-8d-age.json",
+    "syn-pace.json",
+    "syn-pace-8d.json",
+    "syn-pace-8d-age.json",
+    "peuk-pace.json",
+    "peuk-pace-8d.json",
+    "peuk-pace-8d-age.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-31T20:46:34Z",
+   "updated": "2026-10-30T16:48:27Z",
+   "hour": "2026-10-29T00:00:00Z",
+   "modelRun": null,
+   "source": "NASA OB.DAAC, PACE OCI",
+   "hours": [
+    "2026-10-29T00:00:00Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 68.78,
+   "nearestOffsetHours": 68.78
+  },
+  "pace-npp": {
+   "title": "PACE OCI net primary production (CAFE)",
+   "roots": [
+    "npp-pace.json",
+    "npp-pace-8d.json",
+    "npp-pace-8d-age.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-31T20:46:34Z",
+   "updated": "2026-10-30T18:48:44Z",
+   "hour": "2026-10-28T00:00:00Z",
+   "modelRun": null,
+   "source": "NASA OB.DAAC, PACE OCI",
+   "hours": [
+    "2026-10-28T00:00:00Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 92.78,
+   "nearestOffsetHours": 92.78
+  },
+  "pace-aop": {
+   "title": "PACE OCI fluorescence line height",
+   "roots": [
+    "nflh-pace.json",
+    "nflh-pace-8d.json",
+    "nflh-pace-8d-age.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-31T20:46:34Z",
+   "updated": "2026-10-30T14:49:09Z",
+   "hour": "2026-10-29T00:00:00Z",
+   "modelRun": null,
+   "source": "NASA OB.DAAC, PACE OCI",
+   "hours": [
+    "2026-10-29T00:00:00Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 68.78,
+   "nearestOffsetHours": 68.78
+  },
+  "pace-kd": {
+   "title": "PACE OCI diffuse attenuation at 490 nm",
+   "roots": [
+    "kd490-pace.json",
+    "kd490-pace-8d.json",
+    "kd490-pace-8d-age.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-31T20:46:34Z",
+   "updated": "2026-10-30T12:51:46Z",
+   "hour": "2026-10-29T00:00:00Z",
+   "modelRun": null,
+   "source": "NASA OB.DAAC, PACE OCI",
+   "hours": [
+    "2026-10-29T00:00:00Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 68.78,
+   "nearestOffsetHours": 68.78
+  },
+  "pace-par": {
+   "title": "PACE OCI photosynthetically available radiation",
+   "roots": [
+    "par-pace.json",
+    "par-pace-8d.json",
+    "par-pace-8d-age.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-31T20:46:34Z",
+   "updated": "2026-10-30T16:48:27Z",
+   "hour": "2026-10-28T00:00:00Z",
+   "modelRun": null,
+   "source": "NASA OB.DAAC, PACE OCI",
+   "hours": [
+    "2026-10-28T00:00:00Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 92.78,
+   "nearestOffsetHours": 92.78
+  },
+  "pace-iop": {
+   "title": "PACE OCI inherent optical properties at 442 nm",
+   "roots": [
+    "adg442-pace.json",
+    "adg442-pace-8d.json",
+    "adg442-pace-8d-age.json",
+    "aph442-pace.json",
+    "aph442-pace-8d.json",
+    "aph442-pace-8d-age.json",
+    "bbp442-pace.json",
+    "bbp442-pace-8d.json",
+    "bbp442-pace-8d-age.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-31T20:46:34Z",
+   "updated": "2026-10-30T14:49:09Z",
+   "hour": "2026-10-29T00:00:00Z",
+   "modelRun": null,
+   "source": "NASA OB.DAAC, PACE OCI",
+   "hours": [
+    "2026-10-29T00:00:00Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 68.78,
+   "nearestOffsetHours": 68.78
+  },
+  "pace-aer": {
+   "title": "PACE OCI aerosol optical depth and UV aerosol index, 0.1 degree",
+   "roots": [
+    "aod550-pace.json",
+    "aod550-pace-8d.json",
+    "aod550-pace-8d-age.json",
+    "uvai-pace.json",
+    "uvai-pace-8d.json",
+    "uvai-pace-8d-age.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-31T20:46:34Z",
+   "updated": "2026-10-30T14:49:09Z",
+   "hour": "2026-10-29T00:00:00Z",
+   "modelRun": null,
+   "source": "NASA OB.DAAC, PACE OCI",
+   "hours": [
+    "2026-10-29T00:00:00Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 68.78,
+   "nearestOffsetHours": 68.78
+  },
+  "pace-trgas": {
+   "title": "PACE OCI total ozone and nitrogen dioxide",
+   "roots": [
+    "o3-pace.json",
+    "o3-pace-8d.json",
+    "o3-pace-8d-age.json",
+    "no2-pace.json",
+    "no2-pace-8d.json",
+    "no2-pace-8d-age.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-31T20:46:34Z",
+   "updated": "2026-10-30T18:48:44Z",
+   "hour": "2026-10-29T00:00:00Z",
+   "modelRun": null,
+   "source": "NASA OB.DAAC, PACE OCI",
+   "hours": [
+    "2026-10-29T00:00:00Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 68.78,
+   "nearestOffsetHours": 68.78
+  },
+  "pace-cloud": {
+   "title": "PACE OCI cloud cover, top height, optical thickness and particle size",
+   "roots": [
+    "cloud-pace.json",
+    "cloud-pace-8d.json",
+    "cloud-pace-8d-age.json",
+    "cth-pace.json",
+    "cth-pace-8d.json",
+    "cth-pace-8d-age.json",
+    "cot-pace.json",
+    "cot-pace-8d.json",
+    "cot-pace-8d-age.json",
+    "cer-pace.json",
+    "cer-pace-8d.json",
+    "cer-pace-8d-age.json"
+   ],
+   "fate": "fresh",
+   "reason": null,
+   "checked": "2026-10-31T20:46:34Z",
+   "updated": "2026-10-30T20:49:50Z",
+   "hour": "2026-10-29T00:00:00Z",
+   "modelRun": null,
+   "source": "NASA OB.DAAC, PACE OCI",
+   "hours": [
+    "2026-10-29T00:00:00Z"
+   ],
+   "stale": false,
+   "staleCause": null,
+   "ageHours": 68.78,
+   "nearestOffsetHours": 68.78
+  }
+ }
+}

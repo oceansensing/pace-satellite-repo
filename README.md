@@ -39,7 +39,9 @@ map; the map's status line still reports these products when they fall behind.
 ## Where the data comes from
 
 NASA's Ocean Biology Distributed Active Archive Center (OB.DAAC): its catalog (CMR) says which daily
-near-real-time files exist, and its OPeNDAP server answers a subset of each file without a login. Only daily
+near-real-time files exist, and each file is read in part, by byte ranges, from NASA's Earthdata Cloud copy
+with an Earthdata login (since 2026-11-06; OB.DAAC's OPeNDAP server, which needed none, has answered every
+request "too many requests" since 2026-11-02, decision D6). Only daily
 near-real-time files exist, so the 8-day mean is made here. NASA's data use guidance places mission data
 under CC0 and asks that it be cited: NASA OB.DAAC, PACE OCI, near-real-time, at the version each header's
 `stream` names.

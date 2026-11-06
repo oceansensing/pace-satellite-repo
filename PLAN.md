@@ -13,6 +13,14 @@ PACE's Ocean Color Instrument suites, ocean color and atmosphere, each quantity 
 - **NASA's ocean color archive (OB.DAAC), by OPeNDAP, no login.** A whole-globe 4 km grid of one variable
   answers in 4.7 s (chlorophyll, 13.9 MB) to 8.1 s (cloud fraction, 44 MB, out of a 2.9 GB file). The
   whole-file downloads ask for an Earthdata account; the subsets do not.
+- **Since 2026-11-06, the same files from NASA's Earthdata Cloud copy, read in byte ranges** (D6). OPeNDAP
+  has answered every request HTTP 429 since the run of 2026-11-02 20:44Z, a single request from a Mac
+  included, so the products held at 2026-11-01's day. The catalog (CMR) names each file's cloud address;
+  the cloud's gate answers a HEAD without a login but a GET only with an Earthdata token, then sends a
+  signed address that is followed without it. The file is opened as HDF5 over ranged reads (4 MB blocks,
+  a missing run fetched in one request), so a quantity reads only its own chunks. Measured 2026-11-06 from a
+  Mac, the 2026-11-04 day: chlorophyll 10.3 s (29 of 43 MB), Kd490 15.4 s (the whole 57 MB), aerosol
+  optical depth 9.8 s (38 of 90 MB), cloud fraction 23.5 s (93 MB of 2.9 GB), Prochlorococcus 3.0 s (7 MB).
 - **Which days exist comes from NASA's catalog (CMR)**, which is public: 133 PACE collections, of which the
   near-real-time `_NRT` level-3 and level-4 daily files are what this repository reads.
 - **Only daily near-real-time files.** No 8-day or monthly near-real-time product exists; the

@@ -16,7 +16,8 @@ NASA's PACE products get a repository of their own (the owner, 2026-09-30), set 
 
 The source is NASA's ocean color archive, OB.DAAC: the catalog (CMR) for which days exist and OPeNDAP for
 the values, which needs no login. Not NASA Worldview, the candidate named at D1: its PACE layers are
-rendered pictures, not values a reader can read back.
+rendered pictures, not values a reader can read back. **Its road superseded by D6** (2026-11-06): the
+archive stands, read from its cloud copy with a login.
 
 ## D3 — 2026-10-14 — Each quantity a day and an 8-day mean, one product a NASA suite
 
@@ -37,3 +38,13 @@ Beside each 8-day mean, a grid of each cell's age (the owner, 2026-10-15): whole
 and the newest day that saw the cell, on the mean's own 4 km lattice and tiles, null exactly where the mean
 is, linked from the mean's header (`age`). Not an age per 0.25 degree block, Sentinel-3's road (about 67
 MB), which bounds a cell's age without stating it. 22 roots more, 66 in all; about 2 GB more on R2.
+
+## D6 — 2026-11-06 — NASA's cloud copy of the same archive, in byte ranges, with an Earthdata login
+
+The owner's choice, 2026-11-06: OB.DAAC's OPeNDAP server answered every request HTTP 429 from the run of
+2026-11-02 20:44Z and the products held at 2026-11-01's day, so the same daily files are read from NASA's
+Earthdata Cloud copy, the address the catalog (CMR) gives for each, in byte ranges. That copy needs an
+Earthdata login, the repository's `EARTHDATA_USERNAME` and `EARTHDATA_PASSWORD` secrets, given to the fetch
+step alone. The values are the same files', so no root, header or grid changes. A refused login fails the
+run, since it is ours to fix; NASA's refusals (429, 5xx) still hold the products. OPeNDAP stays the road
+back if the login is ever withdrawn.

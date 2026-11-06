@@ -11,8 +11,11 @@
 # the catalog's ten answers and the caches' restores.
 #
 # Needs: `PIPELINES_SSH_KEY` (this repository's read-only deploy key on
-# oceansensing.github.io) and the organization's three R2_* secrets. NASA's
-# ocean color archive answers its subsets without a login.
+# oceansensing.github.io), the organization's three R2_* secrets, and since
+# 2026-11-06 `EARTHDATA_USERNAME` and `EARTHDATA_PASSWORD`: NASA's OPeNDAP
+# server for PACE answered every request with HTTP 429 from 2026-11-02, and
+# the files are read from NASA's Earthdata Cloud copy instead, which asks for
+# an Earthdata login. Only the fetch step is given them.
 
 name: Publish
 
@@ -158,6 +161,8 @@ jobs:
         id: run
         env:
           PIPELINE_ROOT: ${{ github.workspace }}
+          EARTHDATA_USERNAME: ${{ secrets.EARTHDATA_USERNAME }}
+          EARTHDATA_PASSWORD: ${{ secrets.EARTHDATA_PASSWORD }}
         run: python3 site/pipeline/orchestrate.py run
       - name: Save pace-bgc tiles
         if: steps.run.outputs.built-pace-bgc-tiles == 'true'

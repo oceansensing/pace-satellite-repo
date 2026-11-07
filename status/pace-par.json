@@ -1,0 +1,43 @@
+{
+ "schema": 1,
+ "product": "pace-par",
+ "title": "PACE OCI photosynthetically available radiation",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-11-07T12:46:53Z",
+ "updated": "2026-11-06T16:52:16Z",
+ "hour": "2026-11-04T00:00:00Z",
+ "modelRun": null,
+ "source": "NASA OB.DAAC, PACE OCI",
+ "hours": [
+  "2026-11-04T00:00:00Z"
+ ],
+ "files": {
+  "par-pace-8d-age.json": {
+   "bytes": 3450991,
+   "sha256": "017f93276ba8d23baf8953a15fad4a2e402f83f60d966ccf51063397e190715c"
+  },
+  "par-pace-8d.json": {
+   "bytes": 5012019,
+   "sha256": "3c435d2cc100a83f9da5d95d601aac8e70a237a522d60aaf170b8e5948ff24fe"
+  },
+  "par-pace.json": {
+   "bytes": 5037789,
+   "sha256": "e9fab10c40629835677c9002ff0b73e252ebf949f79cb4e6de4460c6297f747b"
+  }
+ },
+ "tiles": {
+  "tiles-par-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-par-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-par-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  }
+ }
+}

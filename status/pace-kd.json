@@ -1,0 +1,43 @@
+{
+ "schema": 1,
+ "product": "pace-kd",
+ "title": "PACE OCI diffuse attenuation at 490 nm",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-11-07T12:46:53Z",
+ "updated": "2026-11-06T15:16:03Z",
+ "hour": "2026-11-05T00:00:00Z",
+ "modelRun": null,
+ "source": "NASA OB.DAAC, PACE OCI",
+ "hours": [
+  "2026-11-05T00:00:00Z"
+ ],
+ "files": {
+  "kd490-pace-8d-age.json": {
+   "bytes": 4034151,
+   "sha256": "5352bc1a7a66cafb6593f1d74f009f480e2f8bddeebe51252ee1a485f2509da7"
+  },
+  "kd490-pace-8d.json": {
+   "bytes": 5510610,
+   "sha256": "d15bd860b49bbfaea5abcf600223fbf5fb0b0b989ae2576f8fa69d5497b8576e"
+  },
+  "kd490-pace.json": {
+   "bytes": 5259174,
+   "sha256": "93ab9f37c2b6924c0e718c1bcd58d48f7b9b77da9b5b9ac89ce5cd95e921e0d0"
+  }
+ },
+ "tiles": {
+  "tiles-kd490-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-kd490-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-kd490-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  }
+ }
+}

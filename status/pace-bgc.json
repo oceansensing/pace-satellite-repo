@@ -1,0 +1,115 @@
+{
+ "schema": 1,
+ "product": "pace-bgc",
+ "title": "PACE OCI biogeochemistry: chlorophyll-a, phytoplankton carbon, POC and PIC",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-11-07T12:46:53Z",
+ "updated": "2026-11-06T15:16:03Z",
+ "hour": "2026-11-05T00:00:00Z",
+ "modelRun": null,
+ "source": "NASA OB.DAAC, PACE OCI",
+ "hours": [
+  "2026-11-05T00:00:00Z"
+ ],
+ "files": {
+  "chl-pace-8d-age.json": {
+   "bytes": 4033738,
+   "sha256": "da8c98a23c2f597f733d9f34774de2999a0ca3a6187110dd94429361db24bd7a"
+  },
+  "chl-pace-8d.json": {
+   "bytes": 5312254,
+   "sha256": "ba6ed0a1afab7c1f6286b9a24985a272bcb6e2d12b790310c01f803af8dcc003"
+  },
+  "chl-pace.json": {
+   "bytes": 5216495,
+   "sha256": "68867b6ec920498a122c5c3ad831ce88f1f20ced7b69d178900fff649e07fe91"
+  },
+  "phytoc-pace-8d-age.json": {
+   "bytes": 4035292,
+   "sha256": "a318a657fe3eb52e07915f44d57d988673cbbeede225896d1996af0fac1f36e9"
+  },
+  "phytoc-pace-8d.json": {
+   "bytes": 5110261,
+   "sha256": "6ded6baf063e3d4a431366e976f16b27c581e0dd1617731769ce5884a414f08f"
+  },
+  "phytoc-pace.json": {
+   "bytes": 5166876,
+   "sha256": "8ec61cf33549d8f9d8ec7e5373db67975dfe95878e40438e287e571b5df5cb5d"
+  },
+  "pic-pace-8d-age.json": {
+   "bytes": 4032754,
+   "sha256": "629c715c5e76a6e38515b47070bd8ea47d7f5c5f005f7665fb5c381daac3c499"
+  },
+  "pic-pace-8d.json": {
+   "bytes": 5404319,
+   "sha256": "8bdc041db10ed7074cffb230990c69137ed9cab1bda47470e771cca5b84b6296"
+  },
+  "pic-pace.json": {
+   "bytes": 5230673,
+   "sha256": "0f7ac771c18b5c0cd9b80748aa5761369cc591a3136bbcae391c9b4b14fc7005"
+  },
+  "poc-pace-8d-age.json": {
+   "bytes": 4034365,
+   "sha256": "10580175b6d96b8beee4140cf4fdd63a00c92b7350608bab4ffe2db69479d4fd"
+  },
+  "poc-pace-8d.json": {
+   "bytes": 4459274,
+   "sha256": "8c0c4bc9c1e39253ef1bcf319f98dfb46bfb3d0f05c3861a7859384a222b4841"
+  },
+  "poc-pace.json": {
+   "bytes": 5016087,
+   "sha256": "72c29ec3d9470d71f8976ff88a496a474ee437a460a85efc102c28acd54a2e1b"
+  }
+ },
+ "tiles": {
+  "tiles-chl-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-chl-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-chl-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-phytoc-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-phytoc-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-phytoc-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-pic-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-pic-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-pic-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-poc-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-poc-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-poc-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  }
+ }
+}

@@ -1,0 +1,43 @@
+{
+ "schema": 1,
+ "product": "pace-aop",
+ "title": "PACE OCI fluorescence line height",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-11-07T12:46:53Z",
+ "updated": "2026-11-06T16:52:16Z",
+ "hour": "2026-11-05T00:00:00Z",
+ "modelRun": null,
+ "source": "NASA OB.DAAC, PACE OCI",
+ "hours": [
+  "2026-11-05T00:00:00Z"
+ ],
+ "files": {
+  "nflh-pace-8d-age.json": {
+   "bytes": 4045166,
+   "sha256": "5462ecee011c5a9916b5cda079d996646c935ba8b71340fd52baa714349d17ec"
+  },
+  "nflh-pace-8d.json": {
+   "bytes": 5485396,
+   "sha256": "45a9edd1cc0f1f5fece5e29d1b8525a423ec76754446dfa2799274cf917db184"
+  },
+  "nflh-pace.json": {
+   "bytes": 5254233,
+   "sha256": "3c906689f72ad58ff4c645cc411d850d5477ebe250a0761384247eaefb561b8a"
+  }
+ },
+ "tiles": {
+  "tiles-nflh-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-nflh-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-nflh-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  }
+ }
+}

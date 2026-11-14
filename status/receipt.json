@@ -1,0 +1,62 @@
+{
+ "schema": 1,
+ "generated": "2026-11-14T10:46:23Z",
+ "mode": "full",
+ "fates": {
+  "pace-bgc": "fresh",
+  "pace-moana": "fresh",
+  "pace-npp": "fresh",
+  "pace-aop": "fresh",
+  "pace-kd": "fresh",
+  "pace-par": "fresh",
+  "pace-iop": "fresh",
+  "pace-aer": "held",
+  "pace-trgas": "fresh",
+  "pace-cloud": "fresh"
+ },
+ "reasons": {
+  "pace-aer": "step aer exit 1"
+ },
+ "built": {
+  "pace-aer-tiles": false
+ },
+ "withheld": {
+  "pace-bgc": {},
+  "pace-moana": {},
+  "pace-npp": {},
+  "pace-aop": {},
+  "pace-kd": {},
+  "pace-par": {},
+  "pace-iop": {},
+  "pace-aer": {},
+  "pace-trgas": {},
+  "pace-cloud": {}
+ },
+ "deploy": true,
+ "notes": [
+  "pace-bgc: nearest frame is 82.8 h old, past its 72 h budget \u2014 upstream has nothing newer",
+  "pace-moana: nearest frame is 106.8 h old, past its 72 h budget \u2014 upstream has nothing newer",
+  "pace-npp: nearest frame is 130.8 h old, past its 108 h budget \u2014 upstream has nothing newer",
+  "pace-aop: nearest frame is 82.8 h old, past its 72 h budget \u2014 upstream has nothing newer",
+  "pace-kd: nearest frame is 82.8 h old, past its 72 h budget \u2014 upstream has nothing newer",
+  "pace-par: nearest frame is 130.8 h old, past its 96 h budget \u2014 upstream has nothing newer",
+  "pace-iop: nearest frame is 82.8 h old, past its 72 h budget \u2014 upstream has nothing newer",
+  "pace-trgas: nearest frame is 106.8 h old, past its 80 h budget \u2014 upstream has nothing newer",
+  "pace-cloud: nearest frame is 82.8 h old, past its 72 h budget \u2014 upstream has nothing newer"
+ ],
+ "behind": [
+  "pace-aer (226.8 h, held)"
+ ],
+ "tile_keys": {
+  "pace-bgc": "v2-pace-bgc-20261111-NRTV32",
+  "pace-moana": "v2-pace-moana-20261110-NRTV32",
+  "pace-npp": "v2-pace-npp-20261109-NRTV32",
+  "pace-aop": "v2-pace-aop-20261111-NRTV32",
+  "pace-kd": "v2-pace-kd-20261111-NRTV32",
+  "pace-par": "v2-pace-par-20261109-NRTV32",
+  "pace-iop": "v2-pace-iop-20261111-NRTV32",
+  "pace-aer": "v2-pace-aer-20261105-NRTV31",
+  "pace-trgas": "v2-pace-trgas-20261110-NRTV30",
+  "pace-cloud": "v2-pace-cloud-20261111-NRTV31"
+ }
+}

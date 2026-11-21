@@ -1,0 +1,67 @@
+{
+ "schema": 1,
+ "product": "pace-aer",
+ "title": "PACE OCI aerosol optical depth and UV aerosol index, 0.1 degree",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-11-21T14:46:14Z",
+ "updated": "2026-11-20T15:15:21Z",
+ "hour": "2026-11-19T00:00:00Z",
+ "modelRun": null,
+ "source": "NASA OB.DAAC, PACE OCI",
+ "hours": [
+  "2026-11-19T00:00:00Z"
+ ],
+ "files": {
+  "aod550-pace-8d-age.json": {
+   "bytes": 2338245,
+   "sha256": "601674d1110659d1b316ae50b7cc96c856c16b2903e13c4cdff787fe64420571"
+  },
+  "aod550-pace-8d.json": {
+   "bytes": 3553152,
+   "sha256": "5c634a9e8319978ef360e300349bc386775f3f9f7a23ed5e0788e176bd4254fb"
+  },
+  "aod550-pace.json": {
+   "bytes": 3584560,
+   "sha256": "f2cf65e6ce62313456e45de6c1b715abc86d70e5000abd215423e2700d8b1dad"
+  },
+  "uvai-pace-8d-age.json": {
+   "bytes": 1835446,
+   "sha256": "f854d8a60778c72a5b4d955228d1deceac4c1dc8adf684b4dba68803ea16a12e"
+  },
+  "uvai-pace-8d.json": {
+   "bytes": 3149531,
+   "sha256": "eab40dcfa0863e7078f82f44fbf78019634076af09bbdb775ba505098243c59f"
+  },
+  "uvai-pace.json": {
+   "bytes": 3226788,
+   "sha256": "34904ab486667415c4686353108b0b1b28fd555a87162371614e2e8a0f18d514"
+  }
+ },
+ "tiles": {
+  "tiles-aod550-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-aod550-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-aod550-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-uvai-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-uvai-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-uvai-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  }
+ }
+}

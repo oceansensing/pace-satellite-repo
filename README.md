@@ -33,8 +33,11 @@ saw the cell, on the mean's own grid and tiles, linked from the mean's header (`
 header (`wavelength`, nanometers).
 
 **Published to Cloudflare R2 alone** (`r2_only` in `pipeline/products.toml`): the roots and tiles go to the
-second host, and Pages carries this repository's `status/status.json`. Nothing here is drawn on the website's
-map; the map's status line still reports these products when they fall behind.
+second host, and Pages carries this repository's `status/status.json`. Nothing here is drawn on the
+website's map. R2 alone carries them, so this repository's Pages status names none of
+them: the map's status line and the site's watchdog see only whether the
+origin publishes. Their fates are in the status on R2 and on the
+`published` branch.
 
 ## Where the data comes from
 
@@ -54,9 +57,9 @@ carries `pipeline/products.toml`, its publish workflow and a daily cache sweep, 
 Related repositories: `orb-satellite-pace-repo` (the ORB lab's PACE products) and `viirs-satellite-repo`,
 set up the same day.
 
-**Which document gets what, and what "update docs" means across all
-twenty-five repositories, is the doctrine block at the top of `CLAUDE.md`**: the
-same text in all twenty-five, held equal by the site's `check:docs`.
+**Which document gets what, and what "update docs" means across every
+repository of this project, is the doctrine block at the top of `CLAUDE.md`**: the
+same text in each, held equal by the site's `check:docs`.
 
 ## Structure
 

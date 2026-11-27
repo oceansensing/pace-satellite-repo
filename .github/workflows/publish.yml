@@ -1,21 +1,6 @@
-# Publish this repository's products: fetch with the site's pipelines,
-# validate against the site's contract, and publish one build: the roots and
-# tiles to Cloudflare R2 alone, the status beside them on GitHub Pages. Written
-# 2026-10-14 from mercator-model-bgc-repo's workflow, with a tile cache per
-# product.
-#
-# **Scheduled since 2026-10-15**, after the dispatched run 38680413668
-# published a tree (build, Pages and R2 green; 18,315 files on R2) — prove the
-# pipeline, then turn the schedule on. Every two hours: NASA posts each suite
-# once a day, at times that differ by suite, and a run with nothing new costs
-# the catalog's ten answers and the caches' restores.
-#
-# Needs: `PIPELINES_SSH_KEY` (this repository's read-only deploy key on
-# oceansensing.github.io), the organization's three R2_* secrets, and since
-# 2026-11-06 `EARTHDATA_USERNAME` and `EARTHDATA_PASSWORD`: NASA's OPeNDAP
-# server for PACE answered every request with HTTP 429 from 2026-11-02, and
-# the files are read from NASA's Earthdata Cloud copy instead, which asks for
-# an Earthdata login. Only the fetch step is given them.
+# Publish this repository's data: built by the pipeline in
+# oceansensing/oceansensing.github.io, which keeps its documentation.
+# Secrets: EARTHDATA_PASSWORD, EARTHDATA_USERNAME, PIPELINES_SSH_KEY, R2_ACCESS_KEY_ID, R2_ENDPOINT, R2_SECRET_ACCESS_KEY.
 
 name: Publish
 
@@ -38,8 +23,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # A first run builds every product with no cache (measured locally: about
-    # six minutes of fetching, 44 layers); a day's later runs restore.
     timeout-minutes: 60
     permissions:
       contents: read
@@ -47,8 +30,6 @@ jobs:
       deploy: ${{ steps.run.outputs.deploy }}
       behind: ${{ steps.run.outputs.behind }}
     steps:
-      # This repository first: actions/checkout cleans its destination, so
-      # taking the root after the others would wipe them.
       - name: Check out this repository
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: Check out the pipelines
@@ -94,9 +75,6 @@ jobs:
         env:
           PIPELINE_ROOT: ${{ github.workspace }}
         run: python3 site/pipeline/orchestrate.py plan --mode full
-      # **A product's tiles, one cache each**: keyed by the day and the stream
-      # `plan` names, the published day's the fallback, restored before the run
-      # and saved after a build, so only a day's first run reads NASA for them.
       - name: Restore pace-bgc tiles
         uses: actions/cache/restore@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
@@ -230,10 +208,7 @@ jobs:
         with:
           path: out
 
-      # What this origin publishes to R2 alone (the site pipeline's D13, its
-      # note of 2026-10-09), and R2's whole status: the R2 job lays it beside
-      # the site. Public for the day it is kept, so open data only.
-      - name: Hand on what R2 alone carries
+      - name: Upload the second tree
         if: steps.run.outputs.deploy == 'true'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
@@ -278,21 +253,14 @@ jobs:
         if: needs.build.outputs.deploy == 'true'
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
 
-  # R2 stands on its own (the site's pipeline D12): beside the Pages deploy,
-  # not after it, and neither side's failure stops the other.
   publish-r2:
     needs: build
     if: needs.build.outputs.deploy == 'true'
     runs-on: ubuntu-latest
-    # A day's publish uploads about 9,000 tiles (44 layers, 130-490 each,
-    # measured locally 2026-10-14); only what changed is uploaded, and at the
-    # fields' measured pace (15,256 files in 26 minutes) that is about 15.
     timeout-minutes: 60
     permissions:
       contents: read
     steps:
-      # The publish, and beside it the writer it packs a tile set into one
-      # archive with (scripts/tile_archive.py).
       - name: Check out the publish script
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -308,14 +276,14 @@ jobs:
           name: github-pages
           path: pages
 
-      - name: Download what R2 alone carries
+      - name: Download the second tree
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: r2-only
           path: r2-only
       - name: Test the publish script
         run: python3 code/pipeline/test_publish_r2.py
-      - name: Publish to R2
+      - name: Publish to storage
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}

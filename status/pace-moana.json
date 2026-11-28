@@ -1,0 +1,91 @@
+{
+ "schema": 1,
+ "product": "pace-moana",
+ "title": "PACE OCI picoplankton (MOANA): Prochlorococcus, Synechococcus, picoeukaryotes, Atlantic",
+ "fate": "fresh",
+ "reason": null,
+ "checked": "2026-11-28T10:49:00Z",
+ "updated": "2026-11-27T22:46:27Z",
+ "hour": "2026-11-26T00:00:00Z",
+ "modelRun": null,
+ "source": "NASA OB.DAAC, PACE OCI",
+ "hours": [
+  "2026-11-26T00:00:00Z"
+ ],
+ "files": {
+  "peuk-pace-8d-age.json": {
+   "bytes": 1007237,
+   "sha256": "9b96aca04da9ef202c5e75feddfacacf20daadb359616c94320bd00df4afeb7b"
+  },
+  "peuk-pace-8d.json": {
+   "bytes": 1214070,
+   "sha256": "49f6e42087a99e6faf63ff2d38ba64241cce7df176ba085d5930b034a3de6ed0"
+  },
+  "peuk-pace.json": {
+   "bytes": 1229092,
+   "sha256": "83e8aa4f2cf2ca629d89891a176e737db032f1cfdb9ce485c9f068b1c62186b9"
+  },
+  "pro-pace-8d-age.json": {
+   "bytes": 1008298,
+   "sha256": "7e07069c218970dedcb1648482827bb4c2fa130d8a898f47506745572fa5b2ff"
+  },
+  "pro-pace-8d.json": {
+   "bytes": 1328546,
+   "sha256": "b1de5df98df6c0fa843ed6e49391c20984be568b10f376295ef0b4b99d80ed65"
+  },
+  "pro-pace.json": {
+   "bytes": 1250719,
+   "sha256": "834ca85d0e1bd425f0d51f15f0a1e0a444959ee2f531aae8466cf0be97ff53f9"
+  },
+  "syn-pace-8d-age.json": {
+   "bytes": 1007236,
+   "sha256": "a579ed6138bedafdc685ae2c6bb3a85a37837a072409d5969a79fc31e1fbba51"
+  },
+  "syn-pace-8d.json": {
+   "bytes": 1246226,
+   "sha256": "c7a1fe81dfc66701f2d373a1c420e7565f58e4a76dd09cefb354be2be09bcd03"
+  },
+  "syn-pace.json": {
+   "bytes": 1232373,
+   "sha256": "c4aa70266b39dd79edc043e19d1714d1f1f09bfde86c78abb23bf0c54e553f9f"
+  }
+ },
+ "tiles": {
+  "tiles-peuk-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-peuk-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-peuk-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-pro-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-pro-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-pro-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-syn-pace": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-syn-pace-8d": {
+   "state": "kept",
+   "reason": null
+  },
+  "tiles-syn-pace-8d-age": {
+   "state": "kept",
+   "reason": null
+  }
+ }
+}
